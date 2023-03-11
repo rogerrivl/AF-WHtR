@@ -97,6 +97,15 @@ function WHTR_Cal() {
       >
         <Container maxWidth="xs">
           <form>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Typography>
+                WHtR measures excess fat distribution in the abdominal region
+                and is calculated by dividing waist circumference by height.
+                Excess fat distribution in the abdominal region is associated
+                with increased health risk.
+              </Typography>
+            </Box>
+
             <Box sx={{ display: "flex", justifyContent: "right" }}>
               <FormControlLabel
                 control={
@@ -109,14 +118,21 @@ function WHTR_Cal() {
                 label="Feet and Inches"
               />
             </Box>
-            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
               <TextField
-                label="Waist Measurement (inches)"
+                label="Waist (inches)"
                 value={waist}
                 onChange={(e) => setWaist(e.target.value)}
                 type="number"
                 required
-                fullWidth
+                // fullWidth
               />
               {useFeet ? (
                 <Box sx={{ display: "flex", gap: 2 }}>
@@ -139,12 +155,12 @@ function WHTR_Cal() {
                 </Box>
               ) : (
                 <TextField
-                  label="Height Measurement (inches)"
+                  label="Height (inches)"
                   value={heightInches}
                   onChange={(e) => setHeightInches(e.target.value)}
                   type="number"
                   required
-                  fullWidth
+                  //   fullWidth
                 />
               )}
             </Box>
@@ -169,18 +185,15 @@ function WHTR_Cal() {
                   </Typography>
                   <Typography
                     textAlign={"center"}
-                    variant="body1"
+                    variant="h5"
+                    color={"green"}
+                    fontWeight="bold"
                     sx={{ mt: 2 }}
                   >
                     WTHR: {ratio}
                   </Typography>
-                  <Typography
-                    textAlign={"center"}
-                    variant="body1"
-                    sx={{ mt: 2 }}
-                  >
-                    Risk Level:
-                    {riskLevel}
+                  <Typography textAlign={"center"} variant="h6" sx={{ mt: 2 }}>
+                    Risk Level: {riskLevel}
                   </Typography>
                 </CardContent>
               </Card>
