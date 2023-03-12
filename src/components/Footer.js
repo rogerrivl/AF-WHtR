@@ -5,7 +5,7 @@ function Footer() {
     <div
       style={{
         position: "fixed",
-        bottom: 0,
+        bottom: 2,
         left: 0,
         width: "100%",
         backgroundColor: "#f5f5f5",
@@ -15,7 +15,7 @@ function Footer() {
         variant="caption"
         textOverflow={true}
         align="center"
-        sx={{ py: 1 }}
+        sx={{ py: 1, textAlign: "center" }}
       >
         This is not an official U.S Air Force website. It is for informational
         purposes only. Please consult a healthcare professional before making

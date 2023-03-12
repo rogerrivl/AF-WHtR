@@ -16,7 +16,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
-
+import RatioResult from "./RatioResults";
 function WHTR_Cal() {
   const [waist, setWaist] = useState("");
   const [heightFeet, setHeightFeet] = useState("");
@@ -171,34 +171,7 @@ function WHTR_Cal() {
               </Button>
             </Box>
           </form>
-          {ratio && (
-            <Box sx={{ mt: 5 }}>
-              <Card>
-                <CardContent>
-                  <Typography
-                    textAlign={"center"}
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                  >
-                    Waist to Height Ratio Result:
-                  </Typography>
-                  <Typography
-                    textAlign={"center"}
-                    variant="h5"
-                    color={"green"}
-                    fontWeight="bold"
-                    sx={{ mt: 2 }}
-                  >
-                    WTHR: {ratio}
-                  </Typography>
-                  <Typography textAlign={"center"} variant="h6" sx={{ mt: 2 }}>
-                    Risk Level: {riskLevel}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          )}
+          {ratio && <RatioResult ratioValue={ratio} />}
         </Container>
       </Box>
     </div>
