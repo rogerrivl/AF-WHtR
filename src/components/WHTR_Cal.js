@@ -14,6 +14,7 @@ import {
   CardContent,
   Switch,
   FormControlLabel,
+  Divider,
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import RatioResult from "./RatioResults";
@@ -64,26 +65,8 @@ function WHTR_Cal() {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={handleMenuOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-          >
-            <MenuItem onClick={handleMenuClose}>Home</MenuItem>
-            <MenuItem onClick={handleMenuClose}>About</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Contact</MenuItem>
-          </Menu>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Waist to Height Ratio Calculator
+          <Typography variant="h5" fontWeight={"bold"} sx={{ flexGrow: 1 }}>
+            Air & Space Force WHtR Calculator
           </Typography>
         </Toolbar>
       </AppBar>
@@ -97,15 +80,20 @@ function WHTR_Cal() {
       >
         <Container maxWidth="xs">
           <form>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <Typography>
-                WHtR measures excess fat distribution in the abdominal region
-                and is calculated by dividing waist circumference by height.
-                Excess fat distribution in the abdominal region is associated
-                with increased health risk.
+            <Box sx={{ display: "flex", justifyContent: "center", mb: "5px" }}>
+              <Typography
+                variant="body1"
+                // fontWeight={"bold"}
+                align="center"
+              >
+                The Waist-to-Height Ratio calculator measures excess fat
+                distribution in the abdominal region and is calculated by
+                dividing waist circumference by height. Excess fat distribution
+                in the abdominal region is associated with increased health
+                risk.
               </Typography>
             </Box>
-
+            <Divider sx={{ mt: "15px", mb: "15px" }} />
             <Box sx={{ display: "flex", justifyContent: "right" }}>
               <FormControlLabel
                 control={

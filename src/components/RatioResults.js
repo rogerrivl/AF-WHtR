@@ -1,8 +1,8 @@
-import { Typography, Box, Card, CardContent } from "@mui/material";
+import { Typography, Box, Card, CardContent, Divider } from "@mui/material";
 import { green, red, blueGrey, purple, amber } from "@mui/material/colors";
 function RatioResult({ ratioValue }) {
   const isHighRisk = ratioValue > 0.55;
-  const WHTRLeveltextColor = isHighRisk ? red[900] : green[900];
+  const WHTRLeveltextColor = isHighRisk ? red[600] : green[600];
   const RiskLeveltextColor = isHighRisk ? red[600] : green[600];
   const RisktextColor = isHighRisk ? red[500] : green[500];
 
@@ -50,7 +50,8 @@ function RatioResult({ ratioValue }) {
           >
             {isHighRisk ? "High Risk " : "Low-Moderate Risk"}
           </Typography>
-          <Box sx={{ mt: 2 }}>
+          <Divider sx={{ mt: "15px", mb: "15px" }} />
+          <Box sx={{}}>
             <Typography variant="body2" sx={{ textAlign: "center" }}>
               {isHighRisk
                 ? " Airmen and Guardians identified as not meeting the BCP standards will be enrolled into an informal, self-directed Body Composition Improvement Program for 12 months and referred to their medical treatment facility for a medical evaluation and assessment for additional risk factors."
