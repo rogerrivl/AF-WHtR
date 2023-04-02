@@ -1,52 +1,170 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import MuiGrid from "@mui/material/Grid";
-import { Divider, Box } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  Grid,
+  useMediaQuery,
+  useTheme,
+  Link,
+} from "@mui/material";
 
-const Grid = styled(MuiGrid)(({ theme }) => ({
-  width: "100%",
-  ...theme.typography.body2,
-  '& [role="separator"]': {
-    margin: theme.spacing(0, 2),
-  },
-}));
-
-export default function VerticalDividerText() {
-  const contentLeft = (
-    <div>
-      {`Thank you for using the Air & Space Force WHtR Calculator\n`}
-      {/* <a href="https://www.buymeacoffee.com/rogerrivl.dev">
-        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=rogerrivl.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-      </a> */}
-    </div>
-  );
-  const contentRight = (
-    <div>
-      {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
-   Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-   Sed malesuada lobortis pretium.`}
-    </div>
-  );
-
+const Footer = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box
-      sx={{
-        position: "absolute", //Here is the trick
-        bottom: 0, //Here is the trick
-      }}
-    >
-      <Divider sx={{ mt: "15px", mb: "15px", mr: "10px", ml: "10px" }} />
-      <Grid container>
-        <Grid item xs>
-          {contentLeft}
-        </Grid>
-        <Divider orientation="vertical" flexItem>
-          Aim High Airman
-        </Divider>
-        <Grid item xs>
-          {contentRight}
-        </Grid>
+    <Box ml={2} mr={2} mb={2} mt={"100px"}>
+      <Divider></Divider>
+      <Grid container spacing={2}>
+        {isMobile ? (
+          <>
+            <Grid item xs={12}>
+              <Typography variant="body1">
+                This is an open source project hosted in{" "}
+                <Link
+                  href="https://github.com/rogerrivl/AF-WHtR"
+                  target="_blank"
+                >
+                  Github
+                </Link>
+                , feel welcome to contribute or file an issue. This site uses{" "}
+                <Link href="https://mui.com/" target="_blank">
+                  MaterialUI
+                </Link>{" "}
+                for styling.
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Please feel free to reach out for questions or comments:
+                <Link href="mailto:rogerrivl.dev@gmail.com">
+                  rogerrivl.dev@gmail.com
+                </Link>
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Thank you for considering supporting AF WHtR Calculator! If you
+                find this tool useful and would like to contribute to its
+                ongoing development and maintenance, please consider{" "}
+                <Link
+                  href="https://www.buymeacoffee.com/rogerrivl.dev"
+                  target="_blank"
+                >
+                  Buying me a Coffee
+                </Link>
+                . Your support is greatly appreciated!
+              </Typography>
+            </Grid>
+            <Grid item md={6}>
+              {/* <Typography variant="h6">Resources</Typography> */}
+
+              <Typography variant="body1">
+                For the official announcement, kindly click{" "}
+                <Link
+                  href="https://www.af.mil/News/Article-Display/Article/3262830/department-of-the-air-force-outlines-new-body-composition-program-for-airmen-gu/"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                . You can also find Air Force-specific policy by clicking{" "}
+                <Link
+                  href="https://www.af.mil/Portals/1/documents/2023SAF/Tab_1._Air_Force_Body_Composition_Policy_Memo.pdf"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                , or check out U.S Space Force-specific policy by clicking{" "}
+                <Link
+                  href="https://www.af.mil/Portals/1/documents/2023SAF/USSF_Body_Composition_Program_Memo_JAN2023.pdf"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                .
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Please note that this tool is not affiliated with, endorsed by,
+                or sponsored by the U.S. Air Force, U.S. Space Force, or the
+                Department of Defense. This tool is provided for informational
+                purposes only and should not be relied upon as a substitute for
+                professional medical advice, diagnosis, or treatment. You are
+                solely responsible for using this tool at your own risk.
+              </Typography>
+            </Grid>
+          </>
+        ) : (
+          <>
+            <Grid item md={6}>
+              {/* <Typography variant="h6">Column 1</Typography> */}
+              <Typography variant="body1">
+                This is an open source project hosted in{" "}
+                <Link
+                  href="https://github.com/rogerrivl/AF-WHtR"
+                  target="_blank"
+                >
+                  Github
+                </Link>
+                , feel welcome to contribute or file an issue. This site uses{" "}
+                <Link href="https://mui.com/" target="_blank">
+                  MaterialUI
+                </Link>{" "}
+                for styling.
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Please feel free to reach out for questions or comments:
+                <Link href="mailto:rogerrivl.dev@gmail.com">
+                  rogerrivl.dev@gmail.com
+                </Link>
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Thank you for considering supporting AF WHtR Calculator! If you
+                find this tool useful and would like to contribute to its
+                ongoing development and maintenance, please consider{" "}
+                <Link
+                  href="https://www.buymeacoffee.com/rogerrivl.dev"
+                  target="_blank"
+                >
+                  Buying me a Coffee
+                </Link>
+                . Your support is greatly appreciated!
+              </Typography>
+            </Grid>
+            <Grid item md={6}>
+              {/* <Typography variant="h6">Resources</Typography> */}
+
+              <Typography variant="body1">
+                For the official announcement, kindly click{" "}
+                <Link
+                  href="https://www.af.mil/News/Article-Display/Article/3262830/department-of-the-air-force-outlines-new-body-composition-program-for-airmen-gu/"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                . You can also find Air Force-specific policy by clicking{" "}
+                <Link
+                  href="https://www.af.mil/Portals/1/documents/2023SAF/Tab_1._Air_Force_Body_Composition_Policy_Memo.pdf"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                , or check out U.S Space Force-specific policy by clicking{" "}
+                <Link
+                  href="https://www.af.mil/Portals/1/documents/2023SAF/USSF_Body_Composition_Program_Memo_JAN2023.pdf"
+                  target="_blank"
+                >
+                  here
+                </Link>
+                .
+              </Typography>
+              <Typography mt={3} variant="body1">
+                Please note that this tool is not affiliated with, endorsed by,
+                or sponsored by the U.S. Air Force, U.S. Space Force, or the
+                Department of Defense. This tool is provided for informational
+                purposes only and should not be relied upon as a substitute for
+                professional medical advice, diagnosis, or treatment. You are
+                solely responsible for using this tool at your own risk.
+              </Typography>
+            </Grid>
+          </>
+        )}
       </Grid>
     </Box>
   );
-}
+};
+export default Footer;

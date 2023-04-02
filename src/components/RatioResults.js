@@ -1,7 +1,7 @@
 import { Typography, Box, Card, CardContent, Divider } from "@mui/material";
 import { green, red, blueGrey, purple, amber } from "@mui/material/colors";
 function RatioResult({ ratioValue }) {
-  const isHighRisk = ratioValue > 0.55;
+  const isHighRisk = ratioValue >= 0.55;
   const WHTRLeveltextColor = isHighRisk ? red[600] : green[600];
   const RiskLeveltextColor = isHighRisk ? red[600] : green[600];
   const RisktextColor = isHighRisk ? red[500] : green[500];

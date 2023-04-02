@@ -5,13 +5,8 @@ import {
   Button,
   AppBar,
   Toolbar,
-  IconButton,
-  Menu,
-  MenuItem,
   Container,
   Box,
-  Card,
-  CardContent,
   Switch,
   FormControlLabel,
   Divider,
@@ -23,8 +18,6 @@ function WHTR_Cal() {
   const [heightFeet, setHeightFeet] = useState("");
   const [heightInches, setHeightInches] = useState("");
   const [ratio, setRatio] = useState("");
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [riskLevel, setRiskLevel] = useState("");
   const [useFeet, setUseFeet] = useState(true);
 
   const calculateRatio = () => {
@@ -37,25 +30,13 @@ function WHTR_Cal() {
       : heightInches;
     const ratioValue = waist / height;
     setRatio(ratioValue.toFixed(2));
-    if (ratioValue > 0.55) {
-      setRiskLevel("Not Meeting Standard (High Risk)");
-    } else {
-      setRiskLevel("Meeting Standard (Low-Moderate Risk)");
-    }
-  };
-
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
   };
 
   const handleUseFeetChange = (event) => {
     setUseFeet(event.target.checked);
     if (!event.target.checked) {
       setHeightFeet("");
+      setHeightInches("");
     } else {
       setHeightInches("");
     }
@@ -65,9 +46,18 @@ function WHTR_Cal() {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h5" fontWeight={"bold"} sx={{ flexGrow: 1 }}>
-            Air & Space Force WHtR Calculator
-          </Typography>
+          <Box>
+            <Typography
+              variant="caption"
+              fontWeight={"bold"}
+              sx={{ flexGrow: 1 }}
+            >
+              U.S Air Force & U.S Space Force
+            </Typography>
+            <Typography variant="h5" fontWeight={"bold"} sx={{ flexGrow: 1 }}>
+              WHtR Calculator
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box
@@ -154,8 +144,24 @@ function WHTR_Cal() {
             </Box>
 
             <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-              <Button variant="contained" onClick={calculateRatio}>
+              <Button
+                variant="contained"
+                sx={{ width: "100px", mr: 2 }}
+                onClick={calculateRatio}
+              >
                 Calculate
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ width: "100px" }}
+                onClick={() => {
+                  setWaist("");
+                  setHeightFeet("");
+                  setHeightInches("");
+                  setRatio("");
+                }}
+              >
+                Clear
               </Button>
             </Box>
           </form>
