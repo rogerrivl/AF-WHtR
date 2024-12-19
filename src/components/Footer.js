@@ -34,8 +34,8 @@ const Footer = () => {
               </Typography>
               <Typography mt={3} variant="body1">
                 Please feel free to reach out for questions or comments:
-                <Link href="mailto:rogerrivl.dev@gmail.com">
-                  rogerrivl.dev@gmail.com
+                <Link href="mailto:roger@forcemobilestudios.com">
+                roger@forcemobilestudios.com
                 </Link>
               </Typography>
               <Typography mt={3} variant="body1">
@@ -108,8 +108,8 @@ const Footer = () => {
               </Typography>
               <Typography mt={3} variant="body1">
                 Please feel free to reach out for questions or comments:
-                <Link href="mailto:rogerrivl.dev@gmail.com">
-                  rogerrivl.dev@gmail.com
+                <Link href="mailto:roger@forcemobilestudios.com">
+                roger@forcemobilestudios.com
                 </Link>
               </Typography>
               <Typography mt={3} variant="body1">
@@ -164,6 +164,7 @@ const Footer = () => {
           </>
         )}
       </Grid>
+      
     </Box>
   );
 };
