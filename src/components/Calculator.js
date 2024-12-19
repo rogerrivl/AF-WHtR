@@ -44,7 +44,7 @@ function HeightInput({ useFeet, heightFeet, heightInches, onHeightChange }) {
   );
 }
 
-function WHTR_Cal() {
+function Calculator() {
   const [inputs, setInputs] = useState({
     waist: "",
     heightFeet: "",
@@ -180,4 +180,4 @@ function WHTR_Cal() {
   );
 }
 
-export default WHTR_Cal;
+export default Calculator;

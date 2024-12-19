@@ -1,6 +1,6 @@
 import React, { } from "react";
 import Footer from "./components/Footer";
-import WHTR_Cal from "./components/WHTR_Cal";
+import WHTR_Cal from "./components/Calculator";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
