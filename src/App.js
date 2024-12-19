@@ -1,6 +1,6 @@
 import React, { } from "react";
 import Footer from "./components/Footer";
-import WHTR_Cal from "./components/Calculator";
+import Calculator from "./components/Calculator";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <WHTR_Cal />
+      <Calculator />
 
       <Footer />
     </ThemeProvider>
