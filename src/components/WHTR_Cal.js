@@ -11,35 +11,89 @@ import {
   FormControlLabel,
   Divider,
 } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
 import RatioResult from "./RatioResults";
+
+function HeightInput({ useFeet, heightFeet, heightInches, onHeightChange }) {
+  return useFeet ? (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <TextField
+        label="Height in Feet"
+        value={heightFeet}
+        onChange={(e) => onHeightChange('heightFeet', e.target.value)}
+        type="number"
+        required
+        fullWidth
+      />
+      <TextField
+        label="Inches"
+        value={heightInches}
+        onChange={(e) => onHeightChange('heightInches', e.target.value)}
+        type="number"
+        required
+        fullWidth
+      />
+    </Box>
+  ) : (
+    <TextField
+      label="Height (inches)"
+      value={heightInches}
+      onChange={(e) => onHeightChange('heightInches', e.target.value)}
+      type="number"
+      required
+    />
+  );
+}
+
 function WHTR_Cal() {
-  const [waist, setWaist] = useState("");
-  const [heightFeet, setHeightFeet] = useState("");
-  const [heightInches, setHeightInches] = useState("");
-  const [ratio, setRatio] = useState("");
-  const [useFeet, setUseFeet] = useState(true);
+  const [inputs, setInputs] = useState({
+    waist: "",
+    heightFeet: "",
+    heightInches: "",
+    ratio: "",
+    useFeet: true,
+  });
+  const [error, setError] = useState("");
 
   const calculateRatio = () => {
+    const { waist, heightFeet, heightInches, useFeet } = inputs;
+
     if (!waist || (!heightFeet && !heightInches)) {
-      alert("Please enter valid values for waist and height.");
+      setError("Please enter valid values for waist and height.");
       return;
     }
+
     const height = useFeet
-      ? heightFeet * 12 + parseInt(heightInches)
+      ? heightFeet * 12 + parseInt(heightInches || 0, 10)
       : heightInches;
+
     const ratioValue = waist / height;
-    setRatio(ratioValue.toFixed(2));
+    setInputs((prev) => ({ ...prev, ratio: ratioValue.toFixed(2) }));
+    setError(""); // Clear any previous errors
+  };
+
+  const handleInputChange = (field, value) => {
+    setInputs((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleUseFeetChange = (event) => {
-    setUseFeet(event.target.checked);
-    if (!event.target.checked) {
-      setHeightFeet("");
-      setHeightInches("");
-    } else {
-      setHeightInches("");
-    }
+    const useFeet = event.target.checked;
+    setInputs((prev) => ({
+      ...prev,
+      useFeet,
+      heightFeet: useFeet ? prev.heightFeet : "",
+      heightInches: useFeet ? "" : prev.heightInches,
+    }));
+  };
+
+  const clearInputs = () => {
+    setInputs({
+      waist: "",
+      heightFeet: "",
+      heightInches: "",
+      ratio: "",
+      useFeet: true,
+    });
+    setError(""); // Clear any previous errors
   };
 
   return (
@@ -47,35 +101,20 @@ function WHTR_Cal() {
       <AppBar position="static">
         <Toolbar>
           <Box>
-            <Typography
-              variant="caption"
-              fontWeight={"bold"}
-              sx={{ flexGrow: 1 }}
-            >
+            <Typography variant="caption" fontWeight="bold" sx={{ flexGrow: 1 }}>
               U.S Air Force & U.S Space Force
             </Typography>
-            <Typography variant="h5" fontWeight={"bold"} sx={{ flexGrow: 1 }}>
+            <Typography variant="h5" fontWeight="bold" sx={{ flexGrow: 1 }}>
               WHtR Calculator
             </Typography>
           </Box>
         </Toolbar>
       </AppBar>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-
-          mt: 5,
-        }}
-      >
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
         <Container maxWidth="xs">
           <form>
-            <Box sx={{ display: "flex", justifyContent: "center", mb: "5px" }}>
-              <Typography
-                variant="body1"
-                // fontWeight={"bold"}
-                align="center"
-              >
+            <Box sx={{ display: "flex", justifyContent: "center", mb: 1 }}>
+              <Typography variant="body1" align="center">
                 The Waist-to-Height Ratio calculator measures excess fat
                 distribution in the abdominal region and is calculated by
                 dividing waist circumference by height. Excess fat distribution
@@ -83,12 +122,12 @@ function WHTR_Cal() {
                 risk.
               </Typography>
             </Box>
-            <Divider sx={{ mt: "15px", mb: "15px" }} />
-            <Box sx={{ display: "flex", justifyContent: "right" }}>
+            <Divider sx={{ mt: 2, mb: 2 }} />
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <FormControlLabel
                 control={
                   <Switch
-                    checked={useFeet}
+                    checked={inputs.useFeet}
                     onChange={handleUseFeetChange}
                     name="useFeet"
                   />
@@ -96,53 +135,27 @@ function WHTR_Cal() {
                 label="Feet and Inches"
               />
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                gap: 2,
-                flexWrap: "wrap",
-                justifyContent: "center",
-              }}
-            >
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>
               <TextField
                 label="Waist (inches)"
-                value={waist}
-                onChange={(e) => setWaist(e.target.value)}
+                value={inputs.waist}
+                onChange={(e) => handleInputChange('waist', e.target.value)}
                 type="number"
                 required
-                // fullWidth
               />
-              {useFeet ? (
-                <Box sx={{ display: "flex", gap: 2 }}>
-                  <TextField
-                    label="Height in Feet"
-                    value={heightFeet}
-                    onChange={(e) => setHeightFeet(e.target.value)}
-                    type="number"
-                    required
-                    fullWidth
-                  />
-                  <TextField
-                    label="Inches"
-                    value={heightInches}
-                    onChange={(e) => setHeightInches(e.target.value)}
-                    type="number"
-                    required
-                    fullWidth
-                  />
-                </Box>
-              ) : (
-                <TextField
-                  label="Height (inches)"
-                  value={heightInches}
-                  onChange={(e) => setHeightInches(e.target.value)}
-                  type="number"
-                  required
-                  //   fullWidth
-                />
-              )}
+              <HeightInput
+                useFeet={inputs.useFeet}
+                heightFeet={inputs.heightFeet}
+                heightInches={inputs.heightInches}
+                onHeightChange={handleInputChange}
+              />
             </Box>
 
+            {error && (
+              <Box sx={{ color: 'red', textAlign: 'center', mb: 1 }}>
+                {error}
+              </Box>
+            )}
             <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
               <Button
                 variant="contained"
@@ -154,18 +167,13 @@ function WHTR_Cal() {
               <Button
                 variant="contained"
                 sx={{ width: "100px" }}
-                onClick={() => {
-                  setWaist("");
-                  setHeightFeet("");
-                  setHeightInches("");
-                  setRatio("");
-                }}
+                onClick={clearInputs}
               >
                 Clear
               </Button>
             </Box>
           </form>
-          {ratio && <RatioResult ratioValue={ratio} />}
+          {inputs.ratio && <RatioResult ratioValue={inputs.ratio} />}
         </Container>
       </Box>
     </div>

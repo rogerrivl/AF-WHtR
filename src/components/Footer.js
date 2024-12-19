@@ -11,9 +11,10 @@ import {
 const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Box ml={2} mr={2} mb={2} mt={"100px"}>
-      <Divider></Divider>
+      <Divider />
       <Grid container spacing={2}>
         {isMobile ? (
           <>
@@ -35,7 +36,7 @@ const Footer = () => {
               <Typography mt={3} variant="body1">
                 Please feel free to reach out for questions or comments:
                 <Link href="mailto:roger@forcemobilestudios.com">
-                roger@forcemobilestudios.com
+                  roger@forcemobilestudios.com
                 </Link>
               </Typography>
               <Typography mt={3} variant="body1">
@@ -52,8 +53,6 @@ const Footer = () => {
               </Typography>
             </Grid>
             <Grid item md={6}>
-              {/* <Typography variant="h6">Resources</Typography> */}
-
               <Typography variant="body1">
                 For the official announcement, kindly click{" "}
                 <Link
@@ -91,7 +90,6 @@ const Footer = () => {
         ) : (
           <>
             <Grid item md={6}>
-              {/* <Typography variant="h6">Column 1</Typography> */}
               <Typography variant="body1">
                 This is an open source project hosted in{" "}
                 <Link
@@ -109,7 +107,7 @@ const Footer = () => {
               <Typography mt={3} variant="body1">
                 Please feel free to reach out for questions or comments:
                 <Link href="mailto:roger@forcemobilestudios.com">
-                roger@forcemobilestudios.com
+                  roger@forcemobilestudios.com
                 </Link>
               </Typography>
               <Typography mt={3} variant="body1">
@@ -126,8 +124,6 @@ const Footer = () => {
               </Typography>
             </Grid>
             <Grid item md={6}>
-              {/* <Typography variant="h6">Resources</Typography> */}
-
               <Typography variant="body1">
                 For the official announcement, kindly click{" "}
                 <Link
@@ -164,8 +160,18 @@ const Footer = () => {
           </>
         )}
       </Grid>
-      
+
+      {/* Made with Love section */}
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography variant="body2">
+          Made with ❤️ by{" "}
+          <Link href="https://forcemobilestudios.com" target="_blank">
+            Force Mobile Studios
+          </Link>
+        </Typography>
+      </Box>
     </Box>
   );
 };
+
 export default Footer;
