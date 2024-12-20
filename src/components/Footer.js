@@ -170,6 +170,8 @@ const Footer = () => {
           </Link>
         </Typography>
       </Box>
+
+      
     </Box>
   );
 };
