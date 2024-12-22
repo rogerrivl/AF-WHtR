@@ -20,7 +20,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Ads />
+      {/* <Ads /> */}
       <Calculator />
       
       <Footer />
