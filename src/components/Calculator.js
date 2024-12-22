@@ -54,6 +54,9 @@ function Calculator() {
   });
   const [error, setError] = useState("");
 
+
+  
+
   const calculateRatio = () => {
     const { waist, heightFeet, heightInches, useFeet } = inputs;
 
