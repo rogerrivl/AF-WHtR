@@ -29,6 +29,10 @@ function RatioResult({ ratioValue }) {
               ? "Airmen and Guardians identified as not meeting the BCP standards will be enrolled into an informal, self-directed Body Composition Improvement Program for 12 months and referred to their medical treatment facility for a medical evaluation and assessment for additional risk factors."
               : "There are no mandatory actions for Airmen and Guardians meeting the BCP standards, however, members will have their WHtR reviewed during their annual medical Periodic Health Assessment. They will receive education or a referral based on their risk category and other health concerns if indicated."}
           </Typography>
+          <Divider sx={{ mt: 2, mb: 2 }} />
+          <Typography variant="body2" sx={{ textAlign: "center" }}>
+          For those looking to enhance their fitness and meet the required standards, we encourage you to explore valuable resources and information available at <a href="https://totalforcehub.com/category/fitness/"  class='custom-link'>Total Force Hub</a>. Get the support you need on your fitness journey!
+          </Typography>
         </CardContent>
       </Card>
     </Box>

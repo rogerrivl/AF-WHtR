@@ -101,24 +101,13 @@ function Calculator() {
 
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <Box>
-            <Typography variant="caption" fontWeight="bold" sx={{ flexGrow: 1 }}>
-              U.S Air Force & U.S Space Force
-            </Typography>
-            <Typography variant="h5" fontWeight="bold" sx={{ flexGrow: 1 }}>
-              WHtR Calculator
-            </Typography>
-          </Box>
-        </Toolbar>
-      </AppBar>
+     
       <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
         <Container maxWidth="xs">
           <form>
             <Box sx={{ display: "flex", justifyContent: "center", mb: 1 }}>
               <Typography variant="body1" align="center">
-                The Waist-to-Height Ratio calculator measures excess fat
+                The Air Force WHtR calculator measures excess fat
                 distribution in the abdominal region and is calculated by
                 dividing waist circumference by height. Excess fat distribution
                 in the abdominal region is associated with increased health
