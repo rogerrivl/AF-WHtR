@@ -1,6 +1,5 @@
 import {
   Box,
-  Divider,
   Typography,
   Link,
 } from "@mui/material";
