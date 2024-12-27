@@ -1,6 +1,6 @@
 import { Typography, Box, Card, CardContent, Divider } from "@mui/material";
 import { green, red } from "@mui/material/colors";
-
+import { Link } from "react-router-dom";
 function RatioResult({ ratioValue }) {
   const isHighRisk = ratioValue >= 0.55;
   const WHTRColor = isHighRisk ? red[600] : green[600];
@@ -31,7 +31,7 @@ function RatioResult({ ratioValue }) {
           </Typography>
           <Divider sx={{ mt: 2, mb: 2 }} />
           <Typography variant="body2" sx={{ textAlign: "center" }}>
-          For those looking to enhance their fitness and meet the required standards, we encourage you to explore valuable resources and information available at <a href="https://totalforcehub.com/category/fitness/"  class='custom-link'>Total Force Hub</a>. Get the support you need on your fitness journey!
+          For those looking to enhance their fitness and meet the required standards, we encourage you to explore valuable resources in the <Link to={"/Fitness"} className="custom-link" >Fitness Tip</Link> page or at <a href="https://totalforcehub.com/category/fitness/"  class='custom-link'>Total Force Hub blog</a>. Get the support you need on your fitness journey!
           </Typography>
         </CardContent>
       </Card>
