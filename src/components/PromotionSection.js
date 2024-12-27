@@ -1,16 +1,29 @@
 import React from "react";
-import { Box, Grid, Card, CardContent, Typography, Link } from "@mui/material";
+import { Box, Grid, Card, CardContent, Typography, Link, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const PromotionSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <Box ml={5} mr={5} mb={2} mt={"40px"}>
-      <Typography variant="h2" mb={2}>
+    <Box 
+      ml={isMobile ? 2 : 5} 
+      mr={isMobile ? 2 : 5} 
+      mb={2} 
+      mt={isMobile ? "20px" : "40px"}
+    >
+      <Typography 
+        variant={isMobile ? "h4" : "h2"} 
+        mb={2} 
+        textAlign={isMobile ? "center" : "left"}
+      >
         Other Projects
       </Typography>
-      <Grid container spacing={4}>
-        {/* Force Mobile Studios Card */}
-        <Grid item xs={12} sm={6}>
-        <Card>
+      <Grid container spacing={isMobile ? 2 : 4}>
+        {/* Total Force Hub Card */}
+        <Grid item xs={12}>
+          <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
                 Total Force Hub
@@ -25,9 +38,8 @@ const PromotionSection = () => {
           </Card>
         </Grid>
 
-        {/* Total Force Hub Card */}
-        <Grid item xs={12} sm={6}>
-          
+        {/* Force Mobile Studios Card */}
+        <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
